@@ -1,77 +1,73 @@
 <?php
- class Personne extends Model{
 
+namespace App\Model;
+
+use App\Core\Model;
+
+
+ abstract class Personne extends Model
+{
+    //Attributs Intances =>  
     protected int $id;
     protected string $nomComplet;
-    protected static string $role; 
+    protected string $sexe;
 
-    public static function Role(string $className){
-        $className = get_called_class();
-        $role = "ROLE_".strtoupper($className);
-        return $role;
-    }
+    //Attributs classes ou static 
+    protected static string $role;
+    //Methodes Abstraites
 
-    //2- constructeur par defaut
-    public function  __construct()
+    //Constructeur Par defaut
+    public function __construct()
     {
-        parent::$table='personne';
     }
-
-    //==========Getter accesseur de ID_personne
-      public function getId():int
-        {
-            return $this->id;
-        }
-
-    //==========Getter accesseur de NomComplet_personne
-    public function getNomComplet() : string
-        {
-            return $this->nomComplet;
-        }    
-
-        //==========Getter accesseur de nbrepersonne
-
+    public static function getRole()
+    {
+        return self::$role = '';
+    }
+    public static function table()
+    {
+        return parent::$table = "personne";
+    }
    
-
-    //==========Setter modificateur de ID_personne
-    public function setId($id) : void
-        {
-            $this->id = $id;
-        }
-
-    //==========Setter modificateur de NomComplet_personne
-    public function setNomComplet($nomComplet) : self
-        {
-            $this->nomComplet = $nomComplet;
-            return $this;
-        }
-    //les methodes abstraites
-    //==========Setter  modificateur de nbrepersonne
-
-   
-
-    /**
-     * Get the value of role
-     */ 
-    public function getRole()
+    //Getters 
+    public function getId(): int
     {
-        return $this->role;
+        return $this->id;
     }
-
-    /**
-     * Set the value of role
-     *
-     * @return  self
-     */ 
-    public function setRole($role)
+    public function getNomComplet(): string
     {
-        $this->role = $role;
-
+        return $this->nomComplet;
+    }
+    //:: Operateur de portee de classe
+    //Setters
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+    public function setNomComplet(string $nomComplet): self
+    {
+        $this->nomComplet = $nomComplet;
         return $this;
     }
 
-   /*  public function findAll():array{
-        $sql="select * from personne where role like".self::$role;
-        return[];
-    } */
+    public function getSexe()
+    {
+        return $this->sexe;
+    }
+
+    public function setSexe($sexe)
+    {
+        $this->sexe = $sexe;
+
+        return $this;
+    }
+    public static function findAll(): array
+    {
+        $sql = "select * from " . self::table() . " where role  like ?";
+        return parent::findBy($sql, [self::getRole()]);
+    }
+    public function insert():int {
+
+    }
 }

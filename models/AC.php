@@ -1,21 +1,51 @@
-<?php 
-    class AC extends User{
-        private array $inscriptions;
+<?php
 
-        public function inscriptions():array{
-            return[];
-        }
-        
-        public function __construct()
-        {
-            self::$role="ROLE_AC";
-            //$this->inscription=[];
-        }
+namespace App\Model;
 
-        public static function findAll():array{
-            $sql="select * from ".parent::table()."where role like 'ROLE_AC' ";
-            return[];
-        }
-       
-    }
-?>
+
+class AC extends User
+{
+
+ 
+  public function __construct()
+  {
+    parent::$role = "ROLE_AC";
+  }
+  public static function getRole()
+  {
+    return parent::$role = 'ROLE_AC';
+  }
+  public static function findAll(): array
+  {
+   /*  $db = self::database();
+    $db->connexionBD();
+    $sql = "select * from " . parent::table()." where role like '". parent::role()."'" ;
+    echo $sql;
+    $result = $db->executeSelect($sql);
+     $db->closeConnexion();
+     return $result; */
+    //return parent::findBy($sql, [self::getRole()]);
+    /* $sql = "select * from " . parent::table() . " where role  like ?";
+    return parent::findBy($sql, [self::getRole()]); */
+  }
+
+  public function insert(): int
+  {
+    $db = self::database();
+    $db->connexionBD();
+    $sql = "INSERT INTO " .parent::table()." (`nom_complet`, `role`,`sexe`,`login`,`password`) VALUES (?,?,?,?,?);";
+    $result =  $db->executeUpdate($sql, [$this->nomComplet, parent::$role,$this->sexe,$this->login,$this->password]);
+    $db->closeConnexion();
+    echo $sql;
+    return $result;
+  }
+
+  public function inscriptions(): array
+  {
+    $sql = "select i.* from " . parent::table() . " p,inscription i 
+    where  p.id=i.ac_id
+    and p.role like ?
+    and p.id=?";
+      return parent::findBy($sql, [$this->id,AC::getRole()]);
+  }
+}

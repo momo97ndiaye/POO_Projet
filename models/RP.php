@@ -1,18 +1,55 @@
-<?php 
-    class RP extends User{
+<?php
 
-      /*   public function inscriptions():array{
-            return[];
-        } */
-        
-        public function __construct()
-        {
-            self::$role="ROLE_RP";
-        }
+namespace App\Model;
 
-        public function findAll():array{
-            $sql="select * from ".parent::table()."where role like 'ROLE_RP' ";
-            return[];
-        }
+use App\Model\User;
+
+class RP extends User
+{
+    public function __construct()
+    {
+        parent::$role = "ROLE_RP";
     }
-?>
+    public static function getRole()
+    {
+        return parent::$role = 'ROLE_RP';
+    }
+    public static function findAll(): array
+    {
+        $sql = "select * from " . parent::table() . " where role  like ?";
+        return parent::findBy($sql, [self::getRole()]);
+    }
+    public function insert(): int
+    {
+      $db = self::database();
+      $db->connexionBD();
+      $sql = "INSERT INTO " .parent::table()." (`nom_complet`, `role`,`sexe`,`login`,`password`) VALUES (?,?,?,?,?);";
+      $result =  $db->executeUpdate($sql, [$this->nomComplet, parent::$role,$this->sexe,$this->login,$this->password]);
+      $db->closeConnexion();
+      echo $sql;
+      return $result;
+    }
+    //fonctions navigationnelles
+    public function professeurs():array
+    {
+        return [];
+    }
+
+    public function classes():array
+    {
+        $sql = "select c.* from " . parent::table() . " p,classe c
+        where  p.id=c.rp_id
+        and p.role='ROLE_RP'
+       and p.id=?";
+       return parent::findBy($sql, [$this->id]);
+    }
+
+    public function demandes():array
+    {
+        $sql = "select d.* from " . parent::table() . " p,demande d
+        where  p.id=d.rp_id
+        and p.role='ROLE_RP'
+       and p.id=?";
+       return parent::findBy($sql, [$this->id]);
+    }
+}
