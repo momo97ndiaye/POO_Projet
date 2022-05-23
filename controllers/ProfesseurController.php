@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Core\Role;
+use App\Model\User;
 use App\Core\Controller;
 use App\Model\Professeur;
+use App\Core\Request;
 
 class ProfesseurController extends Controller{
     public function affecterClasse(){
@@ -16,7 +18,7 @@ class ProfesseurController extends Controller{
                 $this->redirectToRoute('login');
             } else {
                 $data=Professeur::findAll();
-                $this->render('prof/liste.prof.html.php',$data);
+                $this->render('professeur/liste.prof.html.php',$data);
             }
         }
         /* if ($this->request->isPost()) {

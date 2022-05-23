@@ -16,7 +16,11 @@ use App\Model\Inscription;
 use App\Model\AnneeScolaire;
 
 
-require("../vendor/autoload.php");
+require_once("../vendor/autoload.php");
+require_once("../core/Fonctions.php");
+require_once("../routes/Route.web.php");
+
+
 /* $Personne = Personne::findAll();
 var_dump($Personne); */
 /* $AC = new AC();
@@ -40,10 +44,10 @@ $rp->setLogin('dija@gmail.com');
 $rp->setPassword('passer');
 $rp->insert(); */
 
-$res =Etudiant::findAll();
+/* $res =Etudiant::findAll();
 
 echo'<pre>';
 var_dump($res);
 echo'</pre>';
-
+ */
  ?>

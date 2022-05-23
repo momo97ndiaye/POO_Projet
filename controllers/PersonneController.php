@@ -1,11 +1,17 @@
 <?php
 namespace App\Controller;
 
+use App\Model\Etudiant;
 use App\Core\Controller;
 
 class PersonneController extends Controller{
     
     public function lister(){
-        $this->render('personne/liste.html.php');
+       /*  $res =Etudiant::findAll(); */
+
+/* echo'<pre>';
+var_dump($res);
+echo'</pre>'; die; */
+        $this->render('security/login.html.php');
     }
 }
