@@ -17,13 +17,13 @@ class AC extends User
   }
   public static function findAll(): array
   {
-   /*  $db = self::database();
+    $db = self::database();
     $db->connexionBD();
     $sql = "select * from " . parent::table()." where role like '". parent::role()."'" ;
-    echo $sql;
+    //echo $sql;
     $result = $db->executeSelect($sql);
      $db->closeConnexion();
-     return $result; */
+     return $result;
     //return parent::findBy($sql, [self::getRole()]);
     /* $sql = "select * from " . parent::table() . " where role  like ?";
     return parent::findBy($sql, [self::getRole()]); */

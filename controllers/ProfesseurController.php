@@ -14,12 +14,17 @@ class ProfesseurController extends Controller{
     }
     public function listerProf(){
         if ($this->request->isGet()) {
-            if (!Role::isConnect()) {
+           /*  if (!Role::isConnect()) {
                 $this->redirectToRoute('login');
-            } else {
-                $data=Professeur::findAll();
-                $this->render('professeur/liste.prof.html.php',$data);
-            }
+            } else { */
+                $prof=Professeur::findAll();
+        $data=[
+            "titre"=>"Liste des Professeurs",
+            "prof"=>$prof
+         ];
+
+        $this->render('professeur/liste.prof.html.php',$data);
+            //}
         }
         /* if ($this->request->isPost()) {
             //validation

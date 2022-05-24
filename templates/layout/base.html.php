@@ -46,6 +46,28 @@ use App\Core\Controller;
   
   </head>
   <body class="text-center">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Acceuil</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="<?=Constantes::WEB_ROOT.'listeretu' ?>">Etudiants</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=Constantes::WEB_ROOT.'listerprof' ?>">Professeurs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=Constantes::WEB_ROOT.'listerp' ?>">Responsables</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?=Constantes::WEB_ROOT.'listerac' ?>">Attachés</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <?=$contents_for_views?>
   </body>
 </html>

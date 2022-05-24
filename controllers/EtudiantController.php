@@ -9,10 +9,10 @@ class EtudiantController extends Controller{
     public function lister(){
         $etu=Etudiant::findAll();
         $data=[
-            "titre"=>"liste des etudiants",
+            "titre"=>"Liste des Étudiants",
             "etu"=>$etu
          ];
-         
+
         $this->render('etudiant/lister.etudiant.html.php',$data);
     }
 

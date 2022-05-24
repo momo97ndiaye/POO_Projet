@@ -11,18 +11,18 @@
                 <th scope="col">Nom Complet</th>
                 <th scope="col">Adresse</th>
                 <th scope="col">Sexe</th>
-                <th scope="col">Grade</th>
+                <th scope="col">Login</th>
                 <th scope="col">Role</th>
             </tr>
         </thead>
   <tbody>
- <?php foreach ($prof as $prof) { ?>
+ <?php foreach ($ac as $ac) { ?>
     <tr>
-      <td><?= $prof->nom_complet?></td>
-      <td><?= $prof->adresse?></td>
-      <td><?= $prof->sexe?></td>
-      <td><?= $prof->grade?></td>
-      <td><?= $prof->role?></td>
+      <td><?= $ac->nom_complet?></td>
+      <td><?= $ac->adresse?></td>
+      <td><?= $ac->sexe?></td>
+      <td><?= $ac->login?></td>
+      <td><?= $ac->role?></td>
     </tr>
    <?php } ?>
   </tbody>
