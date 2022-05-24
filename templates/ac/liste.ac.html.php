@@ -13,6 +13,7 @@
                 <th scope="col">Sexe</th>
                 <th scope="col">Login</th>
                 <th scope="col">Role</th>
+                <th scope="col">Actions</th>
             </tr>
         </thead>
   <tbody>
@@ -23,6 +24,10 @@
       <td><?= $ac->sexe?></td>
       <td><?= $ac->login?></td>
       <td><?= $ac->role?></td>
+      <td> 
+        <button type="button" class="btn btn-outline-dark">Modifier</button>
+        <button type="button" class="btn btn-outline-danger">Supprimer</button>
+      </td>
     </tr>
    <?php } ?>
   </tbody>

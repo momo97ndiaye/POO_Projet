@@ -10,7 +10,7 @@ class Session
     {
         if(session_status()==PHP_SESSION_NONE)
         {
-            //session_start();
+            session_start();
         }
     }
 
@@ -34,5 +34,9 @@ class Session
         $this->user = $user;
 
         return $this;
+    }
+    
+    public function isConnect(){
+        return isset($_SESSION['user-connect']);
     }
 }

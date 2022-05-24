@@ -21,7 +21,6 @@ abstract class Model implements IModel
   public static function role(){
     $role=get_called_class();   
     $role ="ROLE_".strtoupper(str_replace("App\\Model\\",'',$role));
-    var_dump($role);
     return $role;
 }
   //Redefinition des Fonction IModel  

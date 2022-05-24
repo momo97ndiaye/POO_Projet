@@ -33,4 +33,10 @@ class Role
         return self::isConnect() && $_SESSION['user']->role=="ROLE_ETUDIANT";
 
     }
+    public static function getRole(){
+        return $_SESSION['user-connect']->role;
+    }
+    public static function getUserName(){
+        return $_SESSION['user-connect']->nom_complet;
+    }
 }

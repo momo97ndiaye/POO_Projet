@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
@@ -19,6 +19,9 @@ use App\Model\AnneeScolaire;
 require_once("../vendor/autoload.php");
 require_once("../core/Fonctions.php");
 require_once("../routes/Route.web.php");
+
+/* var_dump(Role::getRole()).'<br>';
+var_dump(Role::getUserName()); */
 
 
 /* $Personne = Personne::findAll();
@@ -50,4 +53,6 @@ echo'<pre>';
 var_dump($res);
 echo'</pre>';
  */
+
+
  ?>
