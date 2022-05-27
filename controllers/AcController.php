@@ -35,4 +35,9 @@ class AcController extends Controller{
              }
          } */
      }
+     public function archiver(int $id){
+        AC::update($id);
+        $this->redirectToRoute('listerac');
+    }
+
 }

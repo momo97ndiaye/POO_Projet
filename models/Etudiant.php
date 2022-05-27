@@ -60,7 +60,7 @@ class Etudiant extends User
     $result = $db->executeSelect($sql);
      $db->closeConnexion();
      return $result; */
-    $sql = "select * from " . parent::table() . " where role  like ?";
+    $sql = "select * from " . parent::table() . " where role  like ? and etat=1";
     return parent::findBy($sql, [self::getRole()]);
   }
 
@@ -69,8 +69,8 @@ class Etudiant extends User
   {
     $db = self::database();
     $db->connexionBD();
-    $sql = "INSERT INTO " .parent::table()." (`nom_complet`, `role`,`sexe`,`login`,`password`) VALUES (?,?,?,?,?);";
-    $result =  $db->executeUpdate($sql, [$this->nomComplet, parent::$role,$this->sexe,$this->login,$this->password]);
+    $sql = "INSERT INTO " .parent::table()." (`nom_complet`, `role`,`sexe`,`login`,`password`,`adresse`) VALUES (?,?,?,?,?,?);";
+    $result =  $db->executeUpdate($sql, [$this->nomComplet, parent::$role,$this->sexe,$this->login,$this->password],$this->adresse);
     $db->closeConnexion();
 /*     echo $sql;
  */    return $result;
@@ -82,5 +82,14 @@ class Etudiant extends User
         where  p.id=i.etudiant_id
         and p.id=?";
        return parent::findBy($sql, [$this->id]);
+  }
+
+  public static function update(int $id): int{
+    $db = self::database();
+    $db->connexionBD();
+    $sql ="UPDATE ".parent::table()." SET etat = 0 WHERE id = ?";
+    $result =  $db->executeUpdate($sql, [$id]);
+    $db->closeConnexion();
+    return $result;
   }
 }

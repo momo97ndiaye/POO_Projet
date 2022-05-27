@@ -2,14 +2,25 @@
 
 namespace App\Model;
 
+use App\Model\AC;
 use App\Core\Model;
+use App\Model\Classe;
+use App\Model\Etudiant;
+use App\Model\AnneeScolaire;
 
 class Inscription extends Model
 {
     //Attributs Instances
     //Attributs navigationnels => attributs issus des associations
     private int $id;
-    private string $etat;
+    private int $ac_id;
+    private int $annee_id;
+    private int $classe_id;
+    private int $etudiant_id;
+
+    public function __construct(){
+        parent::table();
+    }
 
 
 

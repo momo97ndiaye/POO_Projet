@@ -19,7 +19,7 @@ class AC extends User
   {
     $db = self::database();
     $db->connexionBD();
-    $sql = "select * from " . parent::table()." where role like '". parent::role()."'" ;
+    $sql = "select * from " . parent::table()." where role like '". parent::role()."' and etat=1" ;
     //echo $sql;
     $result = $db->executeSelect($sql);
      $db->closeConnexion();
@@ -46,5 +46,14 @@ class AC extends User
     and p.role like ?
     and p.id=?";
       return parent::findBy($sql, [$this->id,AC::getRole()]);
+  }
+
+  public static function update(int $id): int{
+    $db = self::database();
+    $db->connexionBD();
+    $sql ="UPDATE ".parent::table()." SET etat = 0 WHERE id = ?";
+    $result =  $db->executeUpdate($sql, [$id]);
+    $db->closeConnexion();
+    return $result;
   }
 }

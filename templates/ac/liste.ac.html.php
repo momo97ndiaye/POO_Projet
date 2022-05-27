@@ -25,8 +25,9 @@
       <td><?= $ac->login?></td>
       <td><?= $ac->role?></td>
       <td> 
+      <button type="button" class="btn btn-outline-success">Détails</button>
         <button type="button" class="btn btn-outline-dark">Modifier</button>
-        <button type="button" class="btn btn-outline-danger">Supprimer</button>
+        <a  class="btn btn-outline-danger" href="ac/<?= $ac->id?>">Archiver</a>
       </td>
     </tr>
    <?php } ?>

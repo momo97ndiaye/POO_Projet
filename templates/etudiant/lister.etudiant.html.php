@@ -27,8 +27,9 @@
       <td><?= $etu->login?></td>
       <td><?= $etu->role?></td>
       <td> 
+        <button type="button" class="btn btn-outline-success">Détails</button>
         <button type="button" class="btn btn-outline-dark">Modifier</button>
-        <button type="button" class="btn btn-outline-danger">Supprimer</button>
+        <a  class="btn btn-outline-danger" href="etudiant/<?= $etu->id?>">Archiver</a>
       </td>
     </tr>
    <?php } ?>

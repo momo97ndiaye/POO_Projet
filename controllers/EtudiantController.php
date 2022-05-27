@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Model\Etudiant;
 use App\Core\Controller;
+use App\Model\Inscription;
 
 class EtudiantController extends Controller{
 
@@ -30,10 +31,23 @@ class EtudiantController extends Controller{
         $etu->setMatricule($matricule);
         $etu->setSexe($sexe);
         $etu->setAdresse($adresse);
-        $etu->insert();
-        $this->redirectToRoute('ins');
+        $id =$etu->insert();
+        if($id>0) {
+            $inscription = new Inscription();
+            $inscription->setEtudiant_id($id);
+            $inscription->setClasse_id($id);
+            $inscription->insert();
+            $this->redirectToRoute('ins');
+        }else{
+            die("erreur");
+        }
+        
         }
 
+    }
+    public function archiver(int $id){
+        Etudiant::update($id);
+        $this->redirectToRoute('listeretu');
     }
 
 

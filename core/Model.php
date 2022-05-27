@@ -31,7 +31,7 @@ abstract class Model implements IModel
     
     return 0;
   }
-  public function update(): int
+  public static function update(int $id): int
   {
     return 0;
   }
@@ -43,7 +43,6 @@ abstract class Model implements IModel
     $sql = "delete from " . self::table() . " where id=?";
     $result =  $db->executeUpdate($sql, [$id]);
     $db->closeConnexion();
-    echo $sql;
     return $result;
   }
   public static function findAll():array

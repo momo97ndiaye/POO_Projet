@@ -20,6 +20,8 @@ $router->route('/listerpersonne',[PersonneController::class,"listerPersonne"]);
 $router->route('/listerprof',[ProfesseurController::class,"listerProf"]);
 $router->route('/listerp',[RpController::class,"listeRp"]);
 $router->route('/listerac',[AcController::class,"listerAc"]);
+$router->route('/etudiant',[EtudiantController::class,"archiver"]);
+$router->route('/ac',[AcController::class,"archiver"]);
 
 
 try {
